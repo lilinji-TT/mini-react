@@ -1,4 +1,12 @@
 "use strict";
-const content = (React.createElement("div", null,
-    React.createElement(Guang, null, "guang"),
-    React.createElement("a", { href: "xxx" }, "link")));
+const { render, useState, useEffect } = window.MiniReact;
+function App() {
+    const [count, setCount] = useState(0);
+    function handleClick() {
+        setCount((count) => count + 1);
+    }
+    return (MiniReact.createElement("div", null,
+        MiniReact.createElement("p", null, count),
+        MiniReact.createElement("button", { onClick: handleClick }, "\u52A0\u4E00")));
+}
+render(MiniReact.createElement(App, null), document.getElementById("root"));
