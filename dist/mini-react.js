@@ -108,6 +108,7 @@
             dom[name] = "";
         });
         // Set new or changed properties
+        console.log("updateDom", nextProps);
         Object.keys(nextProps)
             .filter(isProperty)
             .filter(isNew(prevProps, nextProps))
@@ -131,7 +132,7 @@
         while (index < elements.length || oldFiber != null) {
             const element = elements[index];
             let newFiber = null;
-            const sameType = (element === null || element === void 0 ? void 0 : element.type) == (oldFiber === null || oldFiber === void 0 ? void 0 : oldFiber.type);
+            const sameType = oldFiber && element && (element === null || element === void 0 ? void 0 : element.type) == (oldFiber === null || oldFiber === void 0 ? void 0 : oldFiber.type);
             if (sameType) {
                 newFiber = {
                     type: oldFiber.type,
