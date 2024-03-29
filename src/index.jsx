@@ -24,7 +24,7 @@ function ToDo() {
       ...todoList,
       {
         title: e.target.value,
-        id: `${+(todoList[todoList.length - 1].id || 0) + 1}`,
+        id: `${+(todoList[todoList.length - 1]?.id || 0) + 1}`,
       },
     ]);
   };

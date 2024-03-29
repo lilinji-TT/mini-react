@@ -252,6 +252,7 @@
     commitEffectHooks();
     currentRoot = wipRoot;
     wipRoot = null;
+    deletions = []; // clear deletions
   }
 
   function commitWork(fiber) {

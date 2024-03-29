@@ -3,10 +3,12 @@
     function createElement(type, props, ...children) {
         return {
             type,
-            props: Object.assign(Object.assign({}, props), { children: children.map((child) => {
+            props: Object.assign(Object.assign({}, props), { children: children
+                    .map((child) => {
                     const isTextNode = typeof child === "string" || typeof child === "number";
                     return isTextNode ? createTextNode(child) : child;
-                }) }),
+                })
+                    .flat(Infinity) }),
         };
     }
     function createTextNode(nodeValue) {
@@ -108,6 +110,7 @@
             dom[name] = "";
         });
         // Set new or changed properties
+        console.log("updateDom", nextProps);
         Object.keys(nextProps)
             .filter(isProperty)
             .filter(isNew(prevProps, nextProps))
@@ -205,6 +208,7 @@
         commitEffectHooks();
         currentRoot = wipRoot;
         wipRoot = null;
+        deletions = []; // clear deletions
     }
     function commitWork(fiber) {
         if (!fiber) {

@@ -17,12 +17,13 @@ function ToDo() {
         setTodoList(newTodoList);
     };
     const handleOnChange = (e) => {
+        var _a;
         console.log("onChange", e.target.vallue);
         setTodoList([
             ...todoList,
             {
                 title: e.target.value,
-                id: `${+(todoList[todoList.length - 1].id || 0) + 1}`,
+                id: `${+(((_a = todoList[todoList.length - 1]) === null || _a === void 0 ? void 0 : _a.id) || 0) + 1}`,
             },
         ]);
     };
