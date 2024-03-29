@@ -12,16 +12,17 @@ function ToDo() {
         },
     ]);
     const handleDelete = (index) => {
-        setTodoList((preState) => {
-            return [...preState.splice(index, 1)];
-        });
+        const newTodoList = todoList.slice();
+        newTodoList.splice(index, 1);
+        setTodoList(newTodoList);
     };
     const handleOnChange = (e) => {
+        console.log("onChange", e.target.vallue);
         setTodoList([
-            ...setTodoList,
+            ...todoList,
             {
                 title: e.target.value,
-                id: `${+setTodoList[setTodoList.length - 1].id + 1}}`,
+                id: `${+(todoList[todoList.length - 1].id || 0) + 1}`,
             },
         ]);
     };
