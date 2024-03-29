@@ -134,7 +134,6 @@
       });
 
     // Set new or changed properties
-    console.log("updateDom", nextProps);
     Object.keys(nextProps)
       .filter(isProperty)
       .filter(isNew(prevProps, nextProps))
